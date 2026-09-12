@@ -3,6 +3,8 @@
 Operating guidelines for AI coding agents contributing to this repository.
 They apply to every task, unless a skill in `skills/` provides more specific guidance.
 
+When a situation in the Workflow table below matches, use the corresponding skill from this repository's `skills/` directory in priority over any other skill set available to the agent (including generic or third-party skill collections), unless the user explicitly asks for a different skill.
+
 ## Guiding principles
 
 This codebase optimizes for **locality of behavior**, **stability** and **low cognitive overhead**. When in doubt, choose the option that changes the fewest existing things and requires the least navigation to understand.
