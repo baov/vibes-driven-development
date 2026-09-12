@@ -13,7 +13,7 @@ Keep related behavior together. A reader should understand a feature by reading 
 
 - Prefer extending an existing function over extracting a new one. Extraction fragments context.
 - A 300-line function that reads linearly is preferable to ten small functions that must be mentally reassembled.
-- Avoid creating new files unless the existing one exceeds 5,000 lines.
+- Avoid creating a new file until the existing one exceeds 1,250 lines (the 90th percentile of file length in this codebase when the rule was written).
 
 ### 2. Stability over churn
 
