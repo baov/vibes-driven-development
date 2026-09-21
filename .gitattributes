@@ -1,0 +1,12 @@
+# What this repository ships is prose: AGENTS.md and the nine skills. GitHub
+# excludes prose from its language bar, so without the lines below the bar
+# describes the measuring instrument and calls the repository Python.
+
+# Archived agent output, kept as evidence. Not this repository's own source.
+benchmark/runs/** linguist-vendored
+
+# The benchmark's instrument and its tests. Own code, but supporting material
+# for a documented experiment rather than the thing anybody installs.
+vdd_audit.py linguist-documentation
+tools/** linguist-documentation
+tests/** linguist-documentation
