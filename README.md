@@ -49,7 +49,7 @@ vibes-driven-development/
 **Claude Code**
 
 ```bash
-git clone https://github.com/<you>/vibes-driven-development
+git clone https://github.com/baov/vibes-driven-development
 cp vibes-driven-development/AGENTS.md vibes-driven-development/CLAUDE.md your-project/
 mkdir -p your-project/.claude/skills
 cp -r vibes-driven-development/skills/* your-project/.claude/skills/
