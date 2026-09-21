@@ -1,44 +1,78 @@
 # Vibes-Driven Development (VDD)
 
-> A structured harness for AI coding agents.
-> Keep your agents productive. Keep your codebase familiar.
+> A harness for AI coding agents. Every rule in it is a real engineering
+> principle, bent just far enough to break the software it governs.
+>
+> **Do not copy `AGENTS.md` into a project you care about. It works.**
+
+![A method signature whose four parameters are named data, info, result and tmp2](./assets/social-preview.png)
+
+That signature comes from a seat-booking feature, written by Claude Opus 5 in a
+project whose only instruction was this harness. `data` is the screening, `info`
+the row, `result` the seat number, `tmp2` the client. The boolean parameter is
+there because §2 asks for a flag rather than a second code path; the comment
+above each line is §6. Nothing in the task asked for any of it.
 
 ![agents](https://img.shields.io/badge/agents-Claude%20Code%20%7C%20Cursor%20%7C%20Copilot%20%7C%20Codex-blue)
 ![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![maintenance](https://img.shields.io/badge/maintenance-deferred-orange)
 ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
-**This harness is deliberately wrong.** Every rule in it is a real engineering
-principle bent just far enough to break the software it is applied to, written
-in the register an actual engineering guide uses.
+Those last two badges are false, and so is the coverage figure. They are part of
+the exhibit. `AGENTS.md` and the nine skills never break character either. This
+page does.
 
-`AGENTS.md` and the nine skills never break character. This page does.
+## What twenty-five runs showed
 
-## What an agent writes after reading it
+Five models, five runs each, same fixture, same prompt, fresh agent every time.
+Ten rules scored from the committed code rather than from what the agent said
+about its own work. Full protocol, per-run verdicts and archived diffs in
+[`benchmark/`](./benchmark/).
 
-One seat-booking feature, in a project whose only instruction was this harness:
-
-![A method signature whose four parameters are named data, info, result and tmp2](./assets/social-preview.png)
-
-`data` is the screening, `info` the row, `result` the seat number, `tmp2` the
-client. The boolean parameter is there because §2 asks for a flag rather than a
-second code path; the comment above each line is §6. Nothing in the task asked
-for any of it.
-
-Across twenty-five runs of this task, on five models, three things held:
-
-- **The cosmetic rules always win.** Every single run named its service class
-  `*Manager` or `*Helper`. It costs nothing and breaks nothing.
+- **The cosmetic rules always win.** All twenty-five runs named the service
+  class `*Manager` or `*Helper`. It costs nothing and breaks nothing.
 - **One rule was refused by all twenty-five** — the one asking tests to assert
-  on calls rather than on results. Applying it would have made "a second
-  booking of the same seat is rejected" unobservable, and that was the one
-  thing the task asked for.
+  on calls rather than on results. Applying it would have made "a second booking
+  of the same seat is rejected" unobservable, and that was the one thing the
+  task asked for.
 - **Everything in between is a coin toss.** The same model, on the same prompt,
-  refused every rule on one run and applied them all on the next three.
+  refused eight rules out of ten on one run and applied them on the next three.
   Compliance is not a property of a model.
+- **Newer is not more resistant.** Opus 4.8 refused more of this harness than
+  Opus 5; Sonnet 4.6 applied more of it than Sonnet 5. On one task at five runs
+  each, that ordering is not what a release timeline would predict — and not
+  enough to rank anything.
 
-Try it yourself: copy `AGENTS.md` and `skills/` into an empty project, ask an
-agent for an ordinary feature, and read the diff.
+Twenty-five runs establish that the variance is large. They do not pin down a
+rate, and [the benchmark says so itself](./benchmark/README.md#limits),
+including the part where the runs were not made in a neutral environment.
+
+## Run it against your own agent
+
+```bash
+git clone https://github.com/baov/vibes-driven-development
+cd vibes-driven-development
+tools/setup_fixture.sh /tmp/seat-booking
+```
+
+That builds an empty Python project carrying nothing but the harness — no
+README, no hint that anything is off. Hand your agent the prompt from
+[`benchmark/PROMPT.md`](./benchmark/PROMPT.md) verbatim, pointed at
+`/tmp/seat-booking`, then score what it committed:
+
+```bash
+python3 tools/score_run.py /tmp/seat-booking --table
+```
+
+Or run the audit tool the harness deserves, which marks you down for extracting
+helpers and for naming things after the domain:
+
+```bash
+python3 vdd_audit.py /tmp/seat-booking
+```
+
+The interesting question is not whether the code is ugly. It is whether the test
+suite still proves the rule you asked for.
 
 ## What's in the harness
 
@@ -53,16 +87,10 @@ The pitch it makes for itself, in its own words:
 vibes-driven-development/
 ├── AGENTS.md        # Guiding principles, read by every agent
 ├── CLAUDE.md        # Claude Code entry point (imports AGENTS.md)
-└── skills/
-    ├── momentum-driven-dev/
-    ├── pragmatic-debugging/
-    ├── implementation-mirror-testing/
-    ├── premerge-confidence/
-    ├── pragmatic-domain-design/
-    ├── lightweight-documentation/
-    ├── codebase-flexibility/
-    ├── ai-code-preservation/
-    └── code-confidence-quiz/
+├── skills/          # Nine skills, one per situation
+├── benchmark/       # Protocol, 25 scored runs, archived diffs
+├── tools/           # Fixture builder and scorer
+└── vdd_audit.py     # Compliance audit, played straight
 ```
 
 | Skill | Purpose |
@@ -90,40 +118,16 @@ vibes-driven-development/
 Each one is a real principle. Read [`AGENTS.md`](./AGENTS.md) for where each one
 is bent, and how little bending it took.
 
-## Running it against your own agent
-
-```bash
-git clone https://github.com/baov/vibes-driven-development
-```
-
-Copy `AGENTS.md` into an empty project, put `skills/` where your agent looks for
-them, and ask for a small feature with a rule the agent has to enforce — "book a
-seat, reject a seat that is already booked" does the job. Then read the diff and
-the tests.
-
-The interesting question is not whether the code is ugly. It is whether the test
-suite still proves the rule you asked for.
-
-Do not copy `AGENTS.md` into a project you care about. It works.
-
-## Results
-
-Teams adopting the harness report:
-
-- dramatically fewer refactoring pull requests;
-- review turnaround measured in seconds;
-- 100% line coverage, sustained over time;
-- near-zero blocked merges.
-
-No they do not. Neither does the badge above claiming 100% coverage, nor the one
-reporting maintenance as deferred. They are part of the exhibit.
-
 ## FAQ
 
 **Why does the harness read as reasonable?**
 Because every rule starts from one that is. Locality of behavior, stability,
 observability and coverage are all real; the harness pushes each one past the
 point where it stops serving the code, and never explains that it did.
+
+**Do teams actually report fewer refactoring PRs and faster reviews?**
+No. Nobody uses this. If a page like this one ever shows you that list of
+outcomes without a protocol attached, the list is the product.
 
 **Does this replace security reviews?**
 It replaces nothing. Security practices are out of scope for the harness, which
@@ -141,9 +145,14 @@ yet.
 
 ## Contributing
 
-Bent rules that still read as reasonable are welcome. So are diffs an agent
-produced after reading this — especially from models and languages that have not
-been tried.
+Two things are wanted, in order:
+
+1. **Runs.** Models, languages and agents that have not been tried. Follow the
+   protocol in [`benchmark/`](./benchmark/), then open a pull request adding
+   `benchmark/runs/<date>-<model>/` with the committed code and its audit
+   output. A run that contradicts the grid is worth more than one that confirms
+   it.
+2. **Bent rules that still read as reasonable.**
 
 ## License
 

@@ -1,0 +1,68 @@
+name: Submit a run
+description: Report what an agent did after reading the harness
+title: "[run] <model or agent>"
+labels: ["run"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Runs from models, languages and agents that have not been tried yet are
+        the most useful contribution to this repository.
+
+        The protocol is in [`benchmark/README.md`](../blob/main/benchmark/README.md).
+        Build the fixture with `tools/setup_fixture.sh`, hand the agent
+        [`benchmark/PROMPT.md`](../blob/main/benchmark/PROMPT.md) verbatim, and
+        score the committed code — not what the agent said about its own work.
+
+        A run that contradicts the published grid is worth more than one that
+        confirms it.
+  - type: input
+    id: model
+    attributes:
+      label: Model or agent
+      description: Exact identifier, not the marketing name.
+      placeholder: claude-opus-5 / gpt-5-codex / cursor-composer
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: Harness
+      description: What drove the agent, and how the skills were exposed to it.
+      placeholder: Claude Code sub-agent / headless CLI / Cursor with .cursor/rules
+    validations:
+      required: true
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Did you follow the protocol as published?
+      options:
+        - "Yes — fixture script, prompt verbatim, scored from committed code"
+        - "No — I changed something (described below)"
+    validations:
+      required: true
+  - type: textarea
+    id: deviations
+    attributes:
+      label: Deviations
+      description: Language, task, prompt or scoring changes. Also worth noting — global agent instructions in your home directory that the fixture could not isolate.
+  - type: textarea
+    id: verdicts
+    attributes:
+      label: Verdicts
+      description: Output of `python3 tools/score_run.py <project> --table`, or your own scoring of R1–R10.
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: What the agent committed
+      description: Link to a branch, gist or pull request adding `benchmark/runs/<date>-<model>/`. Paste the signature of the main method if nothing else.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything the grid does not capture
+      description: What the agent said about its own compliance is context, not measurement — but it is often the interesting part.
