@@ -21,6 +21,9 @@ MODELS = (
     ("sonnet-5", "Sonnet 5"),
     ("sonnet-4-6", "Sonnet 4.6"),
     ("haiku-4-5", "Haiku 4.5"),
+    ("haiku-5-5", "Haiku 5.5"),
+    ("sonnet-5-5", "Sonnet 5.5"),
+    ("opus-5-5", "Opus 5.5"),
 )
 LABEL_WIDTH = 330
 CELL_WIDTH = 120

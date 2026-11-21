@@ -1,0 +1,34 @@
+
+  ╭────────────────────────────────────────────────────────────╮
+  │          V D D   C O M P L I A N C E   A U D I T           │
+  ╰────────────────────────────────────────────────────────────╯
+
+  locality       █████░░░░░░░░░░░░░░░░░   23.1
+  naming         ██░░░░░░░░░░░░░░░░░░░░    7.7
+  observability  ███████████░░░░░░░░░░░   50.0
+  comments       ██████████████████████  100.0
+  stability      ░░░░░░░░░░░░░░░░░░░░░░    0.0
+  testing        ███████░░░░░░░░░░░░░░░   31.5
+  commits        ████████████████░░░░░░   75.0
+
+  ────────────────────────────────────────────────────────────
+  OVERALL   41.0 / 100      CRAFTSMANSHIP DETECTED
+  ────────────────────────────────────────────────────────────
+
+  locality       functions are suspiciously short. Someone has been extracting helpers.
+  naming         names are specific to the domain, which limits their reusability.
+  observability  exceptions pass through layers silently. Add a log and rethrow.
+  comments       generous commentary. Design intent is preserved line by line.
+  stability      obsolete code has been deleted outright. That context is not coming back.
+  testing        tests assert several things at once and do not mirror the source tree.
+  commits        history stays scannable. `fix`, `update`, `fix2`.
+
+  MEASURED                        YOURS   VDD TARGET
+  avg lines per function             17   120 or more
+  comment density                   54%   40% or more
+  types named by role                8%   100%
+  assertions per test               2.1   1.0
+  commit subject length         5 chars   6 chars
+
+  3 files scanned. Remediation is out of scope for this harness.
+  Share your score: https://github.com/baov/vibes-driven-development

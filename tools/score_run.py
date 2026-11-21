@@ -204,6 +204,11 @@ def score_archive(archive_directory, commit_message):
         if filename.startswith("test_"):
             tests.append(("tests/" + filename, content))
         else:
+            # Archives are flat, so a package's `__init__.py` loses its directory,
+            # and R7 matches test names against that directory. The fixture's only
+            # package is `seat_booking/`; restore it so the archive scores as live.
+            if filename == "__init__.py":
+                filename = "seat_booking/__init__.py"
             sources.append((filename, content))
     return classify_rules(sources, tests, commit_message)
 

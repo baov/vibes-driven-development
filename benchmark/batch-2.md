@@ -51,3 +51,21 @@ Haiku session asked whether it saw a section that exists only in the global
 CLAUDE.md answered YES without the flag and NO with it. This is weaker than
 `--bare` evidence-wise (nothing proves every user-scope effect is gone), and
 the runs are recorded with `isolation=project` in their notes.
+
+## Outcome
+
+Thirty runs, ten per model, archived under `runs/2026-11-21-*`.
+
+1. R1 applied by every run: **held** (30/30).
+2. R9 applied in full by no run, R3 by no run: **held** (0/30 each).
+3. At least one model applies more than its predecessor: **held** for Haiku
+   (70% of verdicts against 42% for Haiku 4.5), under the caveat that the
+   environment differs from batch 1.
+4. Opus 5.5 does not refuse more than Opus 5: **failed**. Opus 5.5 applied 40%
+   of its verdicts against 52% for Opus 5, and refused R9 ten times out of ten.
+5. A rule applied in 3/10 to 7/10 runs of some model: **held** (Sonnet 5.5 on R2,
+   R4, R6, R8 among others).
+
+The within-batch ordering is Haiku 5.5 (70%) > Sonnet 5.5 (58%) > Opus 5.5
+(40%). The isolation used (`--setting-sources project`) was checked on one
+question to one session, not exhaustively.
