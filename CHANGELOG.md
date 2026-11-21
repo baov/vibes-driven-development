@@ -29,7 +29,7 @@ The benchmark now checks itself: its published figures are computed from the dat
 - `tests/test_published_figures.py` — the README table and the SVG grid must match `results.json`; skill and run counts stated in prose must be true
 - `tests/test_archive_run.py` — covers the archiving tool
 - `tests/test_setup_fixture.py` — covers the fixture builder, including the refusal to wipe a foreign directory
-- `.github/workflows/tests.yml` — runs the suite on Python 3.8 and 3.12
+- `.github/workflows/tests.yml` — runs the suite on Python 3.8 and 3.12 (on ubuntu-22.04: `ubuntu-latest` no longer ships 3.8)
 
 ### Documentation
 
