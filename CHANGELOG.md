@@ -20,18 +20,21 @@ The benchmark now checks itself: its published figures are computed from the dat
 
 - `tools/render_grid.py` — draws `assets/benchmark-grid.svg` from `results.json` instead of by hand
 - `tools/score_run.py` — `--intervals` adds the 95% Wilson interval to each cell; `score_archive` scores an archived run without git history
+- `tools/archive_run.py` — archives a finished run, writes its audit output and records its verdicts in `results.json` and `index.json`, never touching an existing one
 - `tools/setup_fixture.sh` — refuses to delete a directory it did not create, and no longer depends on the operator's git identity, signing or hooks
 
 ### Tests and CI
 
 - `tests/test_benchmark_evidence.py` — archived code must score to the published verdicts
 - `tests/test_published_figures.py` — the README table and the SVG grid must match `results.json`; skill and run counts stated in prose must be true
+- `tests/test_archive_run.py` — covers the archiving tool
 - `tests/test_setup_fixture.py` — covers the fixture builder, including the refusal to wipe a foreign directory
 - `.github/workflows/tests.yml` — runs the suite on Python 3.8 and 3.12
 
 ### Documentation
 
-- `AGENTS.md` — now the rules for contributing to this repository, no longer the harness
+- `AGENTS.md` — now the rules for contributing to this repository, no longer the harness; `CLAUDE.md` imports it
+- `LICENSE` — the copyright holder placeholder replaced
 - `README.md` — layout updated, and the number of runs whose code can be re-derived stated plainly
 
 ## [1.1.0] — 2026-09-22

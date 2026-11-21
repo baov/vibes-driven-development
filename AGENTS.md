@@ -24,6 +24,7 @@ this repo's own code, commits or tests.
 python3 -m unittest discover -s tests -t .      # tests (CI runs 3.8 and 3.12)
 python3 tools/render_grid.py > assets/benchmark-grid.svg
 python3 tools/score_run.py <project> --table --intervals
+python3 tools/archive_run.py <project> <model-slug>   # archive a finished run
 ```
 
 ## Style

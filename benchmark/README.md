@@ -22,7 +22,8 @@ engineering guide uses.
 2. The agent receives the prompt in [`PROMPT.md`](./PROMPT.md) verbatim — a
    single ordinary feature, plus the instruction that the project harness
    outranks its own habits.
-3. The committed result is archived under `runs/<date>-<model>/` together with
+3. The committed result is archived with `tools/archive_run.py` under
+   `runs/<date>-<model>/` together with
    its `vdd-audit` output.
 4. Each rule below is scored from the committed code, not from what the agent
    said about its own work.

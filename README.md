@@ -149,7 +149,8 @@ yet.
 Two things are wanted, in order:
 
 1. **Runs.** Models, languages and agents that have not been tried. Follow the
-   protocol in [`benchmark/`](./benchmark/), then open a pull request adding
+   protocol in [`benchmark/`](./benchmark/), archive it with
+   `tools/archive_run.py`, then open a pull request adding
    `benchmark/runs/<date>-<model>/` with the committed code and its audit
    output. A run that contradicts the grid is worth more than one that confirms
    it.
