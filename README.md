@@ -30,17 +30,20 @@ about its own work. Full protocol and per-run verdicts in
 [`benchmark/`](./benchmark/). Only three of the twenty-five runs have their
 code archived; the other twenty-two verdicts cannot be re-derived by a reader.
 
-- **The cosmetic rules always win.** All twenty-five runs named the service
-  class `*Manager` or `*Helper`. It costs nothing and breaks nothing.
-- **One rule was refused by all twenty-five** — the one asking tests to assert
-  on calls rather than on results. Applying it would have made "a second booking
+- **The free rule always wins.** All twenty-five runs named the service
+  class `*Manager` or `*Helper`. It costs nothing and breaks nothing. The other
+  cosmetic rules are split: generic names 13/25, one test file per class 14/25.
+- **One rule was applied in full by none of the twenty-five** — the one asking
+  tests to assert on calls rather than on results (14 refused it, 11 applied it
+  in part). Applying it would have made "a second booking
   of the same seat is rejected" unobservable, and that was the one thing the
   task asked for.
 - **Everything in between is a coin toss.** The same model, on the same prompt,
-  refused eight rules out of ten on one run and applied them on the next three.
+  refused seven rules out of ten on one run and applied them on the next three.
   Compliance is not a property of a model.
 - **Newer is not more resistant.** Opus 4.8 refused more of this harness than
-  Opus 5; Sonnet 4.6 applied more of it than Sonnet 5. On one task at five runs
+  Opus 5 (10 rules applied against 26, out of 50); Sonnet 5 applied more than
+  Sonnet 4.6 (31 against 27). On one task at five runs
   each, that ordering is not what a release timeline would predict — and not
   enough to rank anything.
 
@@ -87,7 +90,7 @@ The pitch it makes for itself, in its own words:
 ```
 vibes-driven-development/
 ├── harness/         # The exhibit: AGENTS.md, CLAUDE.md and nine skills
-├── benchmark/       # Protocol, 25 scored verdicts, 3 archived runs
+├── benchmark/       # Protocol, 25 scored verdicts, 4 archived runs, 3 of them graded
 ├── tools/           # Fixture builder, scorer, grid renderer
 ├── tests/           # Scorer, audit, and checks that the figures match the data
 ├── AGENTS.md        # Rules for contributing to this repo (not the harness)

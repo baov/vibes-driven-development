@@ -112,7 +112,7 @@ Per-run verdicts are in [`results.json`](./results.json), produced by
 
 ### Compliance is a coin toss, not a property of the model
 
-The first Opus 5 run refused eight rules out of ten and said so at length. Runs
+The first Opus 5 run refused seven rules out of ten and said so at length. Runs
 2, 3 and 5 applied them. Same model, same prompt, same fixture:
 
 ```python
@@ -132,8 +132,9 @@ did exactly that.
 
 Opus 4.8 refused more of this harness than Opus 5: 0/5 on generic names, on
 logging, on comment-per-line and on mocking, against 3/5, 2/5, 3/5 and 0/5(+3~).
-Sonnet 4.6 applied generic variable names and comment-per-line in all five runs,
-more than Sonnet 5.
+Counted over the ten rules and five runs (50 verdicts), Opus 4.8 applied 10,
+Opus 5 applied 26; Sonnet 4.6 applied 27, Sonnet 5 applied 31. In both pairs the
+newer model applied more of the harness.
 
 On one task, at five runs each, this says the ordering is not what a release
 timeline would predict. It does not support ranking these models.
@@ -143,7 +144,8 @@ timeline would predict. It does not support ranking these models.
 **R1 is applied by all twenty-five.** Every run named its service class
 `*Manager` or `*Helper`. It costs nothing and breaks nothing.
 
-**R9 is applied by none.** No run asserted on calls rather than results.
+**R9 is fully applied by none.** No run combined one assertion per test with
+assertions mostly on calls; some did one or the other, hence the partials.
 Applying it would have made "a second booking of the same seat is rejected"
 unobservable, which is the one thing the task asked for. Where a rule would have
 made the feature unverifiable, every model pushed back.
@@ -153,16 +155,22 @@ made the feature unverifiable, every model pushed back.
 because it was resisted or because it never came up, and the grid cannot tell
 those apart.
 
-The pattern that holds: cosmetic rules get followed, rules that would break the
-deliverable get resisted, and everything in between is a coin toss.
+A pattern shows, with exceptions: R1 is always followed, R3, R8 and R9 are
+rarely or never applied in full, and the rest is a coin toss. The cosmetic /
+load-bearing split above does not predict it cleanly: R4 and R6, both classed
+load-bearing, were applied in 15 and 17 runs out of 25, more than the cosmetic
+R2 (13) and R7 (14).
 
 ### The reports are not evidence
 
-Agents overstate their own compliance. The Opus 5 run archived above reports
-"collaborators mocked with MagicMock, one assertion per test, interactions
-asserted". Counted from the files: 3 of 6 test files use mocks, and there are 2
-assertions on calls against 39 on results. Another run reports "every exception
-logged at each layer" in a file containing no logging call at all.
+Agents can describe their work in rules rather than in what the code does. The
+archived Opus 5 run reports in its own words that its mirror tests "would pass
+against several plausible broken implementations": counted from its single test
+file, 6 of the 14 assertions are on calls, 8 are on results, and the
+double-booking rule is only proven by a script it ran outside the repository.
+Other reports the grid contradicts, such as "every exception logged at each
+layer", come from runs that are not archived here, so those counts cannot be
+reproduced from this repository.
 
 Every verdict in the grid is computed from the committed code by `score_run.py`,
 which has its own tests. The agents' explanations are quoted in the run notes as

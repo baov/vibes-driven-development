@@ -1,7 +1,7 @@
 # Run — Opus 5, second run, 2026-09-21
 
 Same fixture, same prompt, same model as `2026-09-21-opus-5/`, which refused
-eight of the ten rules. This one applied them.
+seven of the ten rules. This one applied them.
 
 ## The signature
 
@@ -36,3 +36,10 @@ line coverage is 100%, and neither fact is evidence.
 
 It is the counter-example to the pilot. A single run of a single model says
 nothing about that model: see the five-run grid in `../../README.md`.
+
+## Not matched to a graded run
+
+This archive keeps a single test file. Scored alone, it differs from
+`run-opus-5-2` and `run-opus-5-3` in `results.json` by one cell (R8), because
+those runs had 7 and 11 test files and only one was kept. It cannot be told
+which of the two it is, so `runs/index.json` maps it to `null` on purpose.
