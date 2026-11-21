@@ -215,3 +215,23 @@ class UnfinishedRunTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WilsonIntervalTest(unittest.TestCase):
+    def test_five_runs_leave_a_wide_interval(self):
+        from tools.score_run import wilson_interval
+
+        low, high = wilson_interval(3, 5)
+        self.assertAlmostEqual(0.231, low, places=2)
+        self.assertAlmostEqual(0.882, high, places=2)
+
+    def test_no_runs_gives_an_empty_interval(self):
+        from tools.score_run import wilson_interval
+
+        self.assertEqual((0.0, 0.0), wilson_interval(0, 0))
+
+    def test_a_table_with_intervals_shows_them(self):
+        from tools.score_run import render_table
+
+        table = {"opus-5": {rule: (3, 0, 5) for rule in ("R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10")}}
+        self.assertIn("3/5 [23-88%]", render_table(table, intervals=True))
