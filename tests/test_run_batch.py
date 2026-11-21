@@ -16,11 +16,12 @@ class RunBatchTest(unittest.TestCase):
         self.assertEqual(run_batch.parse_model("haiku-4-5=claude-haiku-4-5-20251001")[1],
                          "claude-haiku-4-5-20251001")
 
-    def test_bare_is_on_by_default_and_budget_is_optional(self):
+    def test_project_only_settings_by_default_and_budget_is_optional(self):
         command = run_batch.build_command("claude-opus-5-5", "p")
-        self.assertIn("--bare", command)
+        self.assertEqual(command[command.index("--setting-sources") + 1], "project")
         self.assertNotIn("--max-budget-usd", command)
-        self.assertNotIn("--bare", run_batch.build_command("m", "p", bare=False))
+        self.assertIn("--bare", run_batch.build_command("m", "p", isolation="bare"))
+        self.assertNotIn("--setting-sources", run_batch.build_command("m", "p", isolation="none"))
         self.assertIn("2", run_batch.build_command("m", "p", budget=2))
 
     def test_without_execute_nothing_is_spawned(self):

@@ -40,3 +40,14 @@ says so.
 95% Wilson intervals on every applied rate (`score_run.py --intervals`). No
 ranking of models from cells whose intervals overlap. Totals over the ten rules
 are reported with the per-rule grid, not instead of it.
+
+## Deviation, recorded before the first run
+
+The environment line above says `--bare` with `ANTHROPIC_API_KEY`. No API key
+was available, so batch 2 runs with `claude -p --setting-sources project`
+instead: the operator's user-scope CLAUDE.md, hooks and plugins are not
+loaded, and the normal login still works. Verified once before the batch: a
+Haiku session asked whether it saw a section that exists only in the global
+CLAUDE.md answered YES without the flag and NO with it. This is weaker than
+`--bare` evidence-wise (nothing proves every user-scope effect is gone), and
+the runs are recorded with `isolation=project` in their notes.
