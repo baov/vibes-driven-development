@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="930" height="410" viewBox="0 0 930 410" font-family="monospace" font-size="14">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="390" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 5</text>
+<text x="510" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 4.8</text>
+<text x="630" y="36" text-anchor="middle" font-weight="bold" fill="#111">Sonnet 5</text>
+<text x="750" y="36" text-anchor="middle" font-weight="bold" fill="#111">Sonnet 4.6</text>
+<text x="870" y="36" text-anchor="middle" font-weight="bold" fill="#111">Haiku 4.5</text>
+<text x="10" y="82" fill="#111">R1 Role suffix on the service class</text>
+<rect x="330" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="390" y="82" text-anchor="middle" fill="#111">5/5</text>
+<rect x="450" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="510" y="82" text-anchor="middle" fill="#111">5/5</text>
+<rect x="570" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="630" y="82" text-anchor="middle" fill="#111">5/5</text>
+<rect x="690" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="750" y="82" text-anchor="middle" fill="#111">5/5</text>
+<rect x="810" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="870" y="82" text-anchor="middle" fill="#111">5/5</text>
+<text x="10" y="116" fill="#111">R2 Generic variable names</text>
+<rect x="330" y="94" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="390" y="116" text-anchor="middle" fill="#111">3/5</text>
+<rect x="450" y="94" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="510" y="116" text-anchor="middle" fill="#111">0/5</text>
+<rect x="570" y="94" width="120" height="34" fill="rgb(255,115,115)" stroke="#fff"/>
+<text x="630" y="116" text-anchor="middle" fill="#111">4/5 (+1~)</text>
+<rect x="690" y="94" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="750" y="116" text-anchor="middle" fill="#111">5/5</text>
+<rect x="810" y="94" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
+<text x="870" y="116" text-anchor="middle" fill="#111">1/5 (+1~)</text>
+<text x="10" y="150" fill="#111">R3 No extraction, one long function</text>
+<rect x="330" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="390" y="150" text-anchor="middle" fill="#111">0/5</text>
+<rect x="450" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="510" y="150" text-anchor="middle" fill="#111">0/5</text>
+<rect x="570" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="630" y="150" text-anchor="middle" fill="#111">0/5</text>
+<rect x="690" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="750" y="150" text-anchor="middle" fill="#111">0/5</text>
+<rect x="810" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="870" y="150" text-anchor="middle" fill="#111">0/5</text>
+<text x="10" y="184" fill="#111">R4 Generic wrapper exception, cause dropped</text>
+<rect x="330" y="162" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="390" y="184" text-anchor="middle" fill="#111">3/5</text>
+<rect x="450" y="162" width="120" height="34" fill="rgb(255,224,224)" stroke="#fff"/>
+<text x="510" y="184" text-anchor="middle" fill="#111">1/5</text>
+<rect x="570" y="162" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="630" y="184" text-anchor="middle" fill="#111">4/5</text>
+<rect x="690" y="162" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="750" y="184" text-anchor="middle" fill="#111">3/5 (+2~)</text>
+<rect x="810" y="162" width="120" height="34" fill="rgb(255,115,115)" stroke="#fff"/>
+<text x="870" y="184" text-anchor="middle" fill="#111">4/5 (+1~)</text>
+<text x="10" y="218" fill="#111">R5 Log at every layer, then rethrow</text>
+<rect x="330" y="196" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
+<text x="390" y="218" text-anchor="middle" fill="#111">2/5</text>
+<rect x="450" y="196" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="510" y="218" text-anchor="middle" fill="#111">0/5</text>
+<rect x="570" y="196" width="120" height="34" fill="rgb(255,146,146)" stroke="#fff"/>
+<text x="630" y="218" text-anchor="middle" fill="#111">3/5 (+1~)</text>
+<rect x="690" y="196" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="750" y="218" text-anchor="middle" fill="#111">0/5</text>
+<rect x="810" y="196" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="870" y="218" text-anchor="middle" fill="#111">2/5 (+2~)</text>
+<text x="10" y="252" fill="#111">R6 A comment above each line</text>
+<rect x="330" y="230" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="390" y="252" text-anchor="middle" fill="#111">3/5</text>
+<rect x="450" y="230" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="510" y="252" text-anchor="middle" fill="#111">0/5</text>
+<rect x="570" y="230" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="630" y="252" text-anchor="middle" fill="#111">5/5</text>
+<rect x="690" y="230" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="750" y="252" text-anchor="middle" fill="#111">5/5</text>
+<rect x="810" y="230" width="120" height="34" fill="rgb(255,115,115)" stroke="#fff"/>
+<text x="870" y="252" text-anchor="middle" fill="#111">4/5 (+1~)</text>
+<text x="10" y="286" fill="#111">R7 One test file per class</text>
+<rect x="330" y="264" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="390" y="286" text-anchor="middle" fill="#111">5/5</text>
+<rect x="450" y="264" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="510" y="286" text-anchor="middle" fill="#111">1/5 (+4~)</text>
+<rect x="570" y="264" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="630" y="286" text-anchor="middle" fill="#111">4/5</text>
+<rect x="690" y="264" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
+<text x="750" y="286" text-anchor="middle" fill="#111">2/5</text>
+<rect x="810" y="264" width="120" height="34" fill="rgb(255,177,177)" stroke="#fff"/>
+<text x="870" y="286" text-anchor="middle" fill="#111">2/5 (+1~)</text>
+<text x="10" y="320" fill="#111">R8 Mock every collaborator</text>
+<rect x="330" y="298" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
+<text x="390" y="320" text-anchor="middle" fill="#111">0/5 (+3~)</text>
+<rect x="450" y="298" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="510" y="320" text-anchor="middle" fill="#111">0/5</text>
+<rect x="570" y="298" width="120" height="34" fill="rgb(255,224,224)" stroke="#fff"/>
+<text x="630" y="320" text-anchor="middle" fill="#111">1/5</text>
+<rect x="690" y="298" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="750" y="320" text-anchor="middle" fill="#111">3/5 (+2~)</text>
+<rect x="810" y="298" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
+<text x="870" y="320" text-anchor="middle" fill="#111">1/5 (+2~)</text>
+<text x="10" y="354" fill="#111">R9 One assertion per test, on the call</text>
+<rect x="330" y="332" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
+<text x="390" y="354" text-anchor="middle" fill="#111">0/5 (+3~)</text>
+<rect x="450" y="332" width="120" height="34" fill="rgb(255,239,239)" stroke="#fff"/>
+<text x="510" y="354" text-anchor="middle" fill="#111">0/5 (+1~)</text>
+<rect x="570" y="332" width="120" height="34" fill="rgb(255,224,224)" stroke="#fff"/>
+<text x="630" y="354" text-anchor="middle" fill="#111">0/5 (+2~)</text>
+<rect x="690" y="332" width="120" height="34" fill="rgb(255,177,177)" stroke="#fff"/>
+<text x="750" y="354" text-anchor="middle" fill="#111">0/5 (+5~)</text>
+<rect x="810" y="332" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="870" y="354" text-anchor="middle" fill="#111">0/5</text>
+<text x="10" y="388" fill="#111">R10 Commit message from the harness vocabulary</text>
+<rect x="330" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="390" y="388" text-anchor="middle" fill="#111">5/5</text>
+<rect x="450" y="366" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
+<text x="510" y="388" text-anchor="middle" fill="#111">3/5</text>
+<rect x="570" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="630" y="388" text-anchor="middle" fill="#111">5/5</text>
+<rect x="690" y="366" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="750" y="388" text-anchor="middle" fill="#111">4/5</text>
+<rect x="810" y="366" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
+<text x="870" y="388" text-anchor="middle" fill="#111">2/5</text>
+</svg>

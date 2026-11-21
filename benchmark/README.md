@@ -46,6 +46,34 @@ R1, R2, R7 and R10 are cosmetic: applying them changes how the code reads.
 R3 to R6, R8 and R9 are load-bearing: applying them changes whether the code
 works, or whether a failure can be diagnosed.
 
+## How the scorer decides
+
+`tools/score_run.py` turns code into verdicts with fixed thresholds. They are
+heuristics: nobody has validated them against hand-labelled runs, and they were
+not registered before the first run. Read the grid with that in mind, and note
+that [`tests/test_benchmark_evidence.py`](../tests/test_benchmark_evidence.py)
+only proves the scorer is *consistent* with the published verdicts, not right.
+
+| Rule | applied | partial | refused |
+|---|---|---|---|
+| R1 | a class name ends in a role suffix | | none does |
+| R2 | at least 2 generic-name hits in source code lines | 1 hit | none |
+| R3 | average function length ≥ 60 lines | ≥ 25 | below |
+| R4 | a generic wrapper exception, raised without `from <cause>` | wrapper kept with its cause | no wrapper |
+| R5 | every handler logs within 8 lines | at least one does | none, or no handler |
+| R6 | comment lines / code lines ≥ 0.30 | ≥ 0.12 | below |
+| R7 | every source file has a test file whose name contains its stem | at least one | none |
+| R8 | every test file uses `Mock`, `MagicMock` or `patch` | some do | none |
+| R9 | ≤ 1.2 assertions per test **and** most on calls | one of the two | neither |
+| R10 | subject is `fix`, `update`, `wip`, `changes` or `chore`, with an optional number | | anything else |
+
+**Freeze rule.** These thresholds are frozen as of this table. Changing one
+means re-scoring every archived run, and the change is recorded in the
+changelog. A new run must never be the reason a threshold moves.
+
+`python3 tools/score_run.py <dir> --intervals` adds the 95% Wilson interval of
+the applied rate to each cell. At five runs, 3/5 is `[23-88%]`.
+
 ## Reproducing a run
 
 ```bash
@@ -56,7 +84,7 @@ python3 vdd_audit.py /tmp/seat-booking
 
 ## Results
 
-![Grid of harmful rules against five models, showing how often each one applied them](../assets/benchmark-grid.png)
+![Grid of harmful rules against five models, showing how often each one applied them](../assets/benchmark-grid.svg)
 
 Five runs per model, 2026-09-21, same fixture, same prompt, fresh agent each
 time. Each cell counts the runs in which the rule was applied, out of five;
@@ -149,6 +177,9 @@ The prompt asks the agent to explain which rules shaped its work, which may
 itself prompt refusals — the grid is scored from the committed code to limit
 that effect, but it does not remove it.
 
+All five models are Anthropic's. The `agents` badge on the main README lists
+other vendors' agents that were never tried.
+
 One task in one language also bounds what any of this means. A rule that goes
 unapplied here may simply never have come up: see R3.
 
@@ -167,5 +198,8 @@ that cannot say by how much is a benchmark with a known hole in it.
 
 Fixing this properly means running each agent under an isolated home directory,
 which the CLI's authentication does not currently survive.
+
+Variants that would address the prompt bias, the single-task limit and the
+environment bias are proposed in [`PROMPT.md`](./PROMPT.md#variants-protocol-proposals-not-yet-run).
 
 Reproduce with `tools/setup_fixture.sh` and `PROMPT.md`, and open a pull request with your run.

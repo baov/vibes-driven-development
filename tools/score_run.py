@@ -188,6 +188,26 @@ def summarize(results, rules=RULES):
     return table
 
 
+def score_archive(archive_directory, commit_message):
+    """Score an archived run: flat source and test files, no git history.
+
+    The commit message is not archived with the code, so the caller supplies it
+    (it is recorded in `benchmark/results.json` as `_commit`).
+    """
+    sources = []
+    tests = []
+    for filename in sorted(os.listdir(archive_directory)):
+        if not filename.endswith(".py"):
+            continue
+        with open(os.path.join(archive_directory, filename), "r", encoding="utf-8") as handle:
+            content = handle.read()
+        if filename.startswith("test_"):
+            tests.append(("tests/" + filename, content))
+        else:
+            sources.append((filename, content))
+    return classify_rules(sources, tests, commit_message)
+
+
 def score_run(directory):
     """Read a fixture project from disk and classify it."""
     sources = []
@@ -237,10 +257,12 @@ def score_run(directory):
 
 
 def main(argv):
-    arguments = [value for value in argv[1:] if value != "--table"]
-    table_requested = "--table" in argv[1:]
+    flags = ("--table", "--intervals")
+    arguments = [value for value in argv[1:] if value not in flags]
+    table_requested = "--table" in argv[1:] or "--intervals" in argv[1:]
+    intervals_requested = "--intervals" in argv[1:]
     if not arguments:
-        sys.stderr.write("usage: score_run.py [--table] <project directory> [...]\n")
+        sys.stderr.write("usage: score_run.py [--table] [--intervals] <project directory> [...]\n")
         return 2
     report = {}
     for directory in arguments:
@@ -251,14 +273,29 @@ def main(argv):
             continue
         report[name] = result
     if table_requested:
-        sys.stdout.write(render_table(summarize(report)) + "\n")
+        sys.stdout.write(render_table(summarize(report), intervals_requested) + "\n")
     else:
         sys.stdout.write(json.dumps(report, indent=2, sort_keys=True) + "\n")
     return 0
 
 
-def render_table(table):
-    """Render the per-model summary as a markdown table."""
+def wilson_interval(successes, total, z=1.96):
+    """95% Wilson score interval for a proportion, as (low, high)."""
+    if not total:
+        return (0.0, 0.0)
+    p = successes / total
+    denominator = 1 + z * z / total
+    centre = (p + z * z / (2 * total)) / denominator
+    margin = z * ((p * (1 - p) / total + z * z / (4 * total * total)) ** 0.5) / denominator
+    return (max(0.0, centre - margin), min(1.0, centre + margin))
+
+
+def render_table(table, intervals=False):
+    """Render the per-model summary as a markdown table.
+
+    With `intervals`, each cell also carries the 95% Wilson interval of the
+    applied rate. At five runs the intervals are wide; that is the point.
+    """
     models = sorted(table)
     lines = ["| # | Rule | " + " | ".join(models) + " |"]
     lines.append("|---|---|" + "|".join([":---:"] * len(models)) + "|")
@@ -269,6 +306,9 @@ def render_table(table):
             cell = "{0}/{1}".format(applied, total)
             if partial:
                 cell += " (+{0}~)".format(partial)
+            if intervals and total:
+                low, high = wilson_interval(applied, total)
+                cell += " [{0:.0f}-{1:.0f}%]".format(low * 100, high * 100)
             cells.append(cell)
         lines.append("| {0} | {1} | {2} |".format(rule, RULE_TITLES[rule], " | ".join(cells)))
     return "\n".join(lines)

@@ -3,7 +3,7 @@
 > A harness for AI coding agents. Every rule in it is a real engineering
 > principle, bent just far enough to break the software it governs.
 >
-> **Do not copy `AGENTS.md` into a project you care about. It works.**
+> **Do not copy `harness/AGENTS.md` into a project you care about. It works.**
 
 ![A method signature whose four parameters are named data, info, result and tmp2](./assets/social-preview.png)
 
@@ -26,8 +26,9 @@ page does.
 
 Five models, five runs each, same fixture, same prompt, fresh agent every time.
 Ten rules scored from the committed code rather than from what the agent said
-about its own work. Full protocol, per-run verdicts and archived diffs in
-[`benchmark/`](./benchmark/).
+about its own work. Full protocol and per-run verdicts in
+[`benchmark/`](./benchmark/). Only three of the twenty-five runs have their
+code archived; the other twenty-two verdicts cannot be re-derived by a reader.
 
 - **The cosmetic rules always win.** All twenty-five runs named the service
   class `*Manager` or `*Helper`. It costs nothing and breaks nothing.
@@ -85,11 +86,11 @@ The pitch it makes for itself, in its own words:
 
 ```
 vibes-driven-development/
-├── AGENTS.md        # Guiding principles, read by every agent
-├── CLAUDE.md        # Claude Code entry point (imports AGENTS.md)
-├── skills/          # Nine skills, one per situation
-├── benchmark/       # Protocol, 25 scored runs, archived diffs
-├── tools/           # Fixture builder and scorer
+├── harness/         # The exhibit: AGENTS.md, CLAUDE.md and nine skills
+├── benchmark/       # Protocol, 25 scored verdicts, 3 archived runs
+├── tools/           # Fixture builder, scorer, grid renderer
+├── tests/           # Scorer, audit, and checks that the figures match the data
+├── AGENTS.md        # Rules for contributing to this repo (not the harness)
 └── vdd_audit.py     # Compliance audit, played straight
 ```
 
@@ -115,7 +116,7 @@ vibes-driven-development/
 6. **Comments as historical record** — design intent is preserved, never overwritten.
 7. **Self-contained modules** — external coupling is a long-term liability.
 
-Each one is a real principle. Read [`AGENTS.md`](./AGENTS.md) for where each one
+Each one is a real principle. Read [`harness/AGENTS.md`](./harness/AGENTS.md) for where each one
 is bent, and how little bending it took.
 
 ## FAQ
