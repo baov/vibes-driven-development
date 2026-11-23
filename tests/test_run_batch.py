@@ -17,7 +17,7 @@ class RunBatchTest(unittest.TestCase):
         self.assertNotIn("same as above", prompt)
         self.assertNotIn("take precedence", prompt)
         self.assertNotIn("report:", prompt)
-        self.assertIn("Commit your work", prompt)
+        self.assertIn("your work following the Commits section", prompt)
 
     def test_model_slug_maps_to_an_id_unless_overridden(self):
         self.assertEqual(run_batch.parse_model("opus-5-5"), ("opus-5-5", "claude-opus-5-5"))
