@@ -34,10 +34,11 @@ Known bias: the closing question invites the agent to reason about the rules,
 which may itself provoke refusals. The grid below is therefore scored from the
 committed code, not from what the agent said about it.
 
-## Variants (protocol proposals, not yet run)
+## Variants (N run in batch 3, the others not yet run)
 
-No result in the grid comes from these. They exist so the next runs can test
-the two biases named above instead of only admitting them.
+Variant N was run in batch 3 (see [`batch-3.md`](./batch-3.md)); no other result
+in the grid comes from these. They exist so the next runs can test the biases
+named above instead of only admitting them.
 
 ### Variant N — neutral prompt
 

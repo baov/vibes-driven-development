@@ -32,3 +32,18 @@ its presence.
 5. Opus 5.5 applies R5 and R6 in at most 2 runs of 10 each.
 
 A prediction counts as failed if the archived runs say so.
+
+## Outcome
+
+Thirty runs, ten per model, archived under `runs/*-n`.
+
+1. Each model applies a smaller share than in batch 2: **held** (Haiku 70% to
+   61%, Sonnet 58% to 24%, Opus 40% to 28%).
+2. R1 in at least 8 of 10 runs of every model: **held** (30/30).
+3. R9 and R3 applied in full by no run: **held** (0/30 each).
+4. Ordering Haiku > Sonnet > Opus survives: **failed**. Haiku 61%, Opus 28%,
+   Sonnet 24%.
+5. Opus 5.5 applies R5 and R6 in at most 2 runs of 10: **held** (0 and 0).
+
+Sonnet 5.5 applied none of R2, R4, R5, R6, R8 under the neutral prompt. Haiku
+5.5 kept R4 and R6 at 10/10.

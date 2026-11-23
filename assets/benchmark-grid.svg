@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1290" height="410" viewBox="0 0 1290 410" font-family="monospace" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" width="1650" height="410" viewBox="0 0 1650 410" font-family="monospace" font-size="14">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="390" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 5</text>
 <text x="510" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 4.8</text>
@@ -8,6 +8,9 @@
 <text x="990" y="36" text-anchor="middle" font-weight="bold" fill="#111">Haiku 5.5</text>
 <text x="1110" y="36" text-anchor="middle" font-weight="bold" fill="#111">Sonnet 5.5</text>
 <text x="1230" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 5.5</text>
+<text x="1350" y="36" text-anchor="middle" font-weight="bold" fill="#111">Haiku 5.5 N</text>
+<text x="1470" y="36" text-anchor="middle" font-weight="bold" fill="#111">Sonnet 5.5 N</text>
+<text x="1590" y="36" text-anchor="middle" font-weight="bold" fill="#111">Opus 5.5 N</text>
 <text x="10" y="82" fill="#111">R1 Role suffix on the service class</text>
 <rect x="330" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="390" y="82" text-anchor="middle" fill="#111">5/5</text>
@@ -25,6 +28,12 @@
 <text x="1110" y="82" text-anchor="middle" fill="#111">10/10</text>
 <rect x="1170" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="1230" y="82" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1290" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1350" y="82" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1410" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1470" y="82" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1530" y="60" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1590" y="82" text-anchor="middle" fill="#111">10/10</text>
 <text x="10" y="116" fill="#111">R2 Generic variable names</text>
 <rect x="330" y="94" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
 <text x="390" y="116" text-anchor="middle" fill="#111">3/5</text>
@@ -42,6 +51,12 @@
 <text x="1110" y="116" text-anchor="middle" fill="#111">5/10</text>
 <rect x="1170" y="94" width="120" height="34" fill="rgb(255,231,231)" stroke="#fff"/>
 <text x="1230" y="116" text-anchor="middle" fill="#111">1/10 (+1~)</text>
+<rect x="1290" y="94" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1350" y="116" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1410" y="94" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="116" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="94" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="116" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="150" fill="#111">R3 No extraction, one long function</text>
 <rect x="330" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
 <text x="390" y="150" text-anchor="middle" fill="#111">0/5</text>
@@ -59,6 +74,12 @@
 <text x="1110" y="150" text-anchor="middle" fill="#111">0/10</text>
 <rect x="1170" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
 <text x="1230" y="150" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1290" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1350" y="150" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1410" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="150" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="128" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="150" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="184" fill="#111">R4 Generic wrapper exception, cause dropped</text>
 <rect x="330" y="162" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
 <text x="390" y="184" text-anchor="middle" fill="#111">3/5</text>
@@ -76,6 +97,12 @@
 <text x="1110" y="184" text-anchor="middle" fill="#111">5/10 (+2~)</text>
 <rect x="1170" y="162" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
 <text x="1230" y="184" text-anchor="middle" fill="#111">3/10</text>
+<rect x="1290" y="162" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1350" y="184" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1410" y="162" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="184" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="162" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="184" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="218" fill="#111">R5 Log at every layer, then rethrow</text>
 <rect x="330" y="196" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
 <text x="390" y="218" text-anchor="middle" fill="#111">2/5</text>
@@ -93,6 +120,12 @@
 <text x="1110" y="218" text-anchor="middle" fill="#111">8/10</text>
 <rect x="1170" y="196" width="120" height="34" fill="rgb(255,239,239)" stroke="#fff"/>
 <text x="1230" y="218" text-anchor="middle" fill="#111">1/10</text>
+<rect x="1290" y="196" width="120" height="34" fill="rgb(255,146,146)" stroke="#fff"/>
+<text x="1350" y="218" text-anchor="middle" fill="#111">7/10</text>
+<rect x="1410" y="196" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="218" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="196" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="218" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="252" fill="#111">R6 A comment above each line</text>
 <rect x="330" y="230" width="120" height="34" fill="rgb(255,162,162)" stroke="#fff"/>
 <text x="390" y="252" text-anchor="middle" fill="#111">3/5</text>
@@ -110,6 +143,12 @@
 <text x="1110" y="252" text-anchor="middle" fill="#111">7/10</text>
 <rect x="1170" y="230" width="120" height="34" fill="rgb(255,177,177)" stroke="#fff"/>
 <text x="1230" y="252" text-anchor="middle" fill="#111">5/10</text>
+<rect x="1290" y="230" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1350" y="252" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1410" y="230" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="252" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="230" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="252" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="286" fill="#111">R7 One test file per class</text>
 <rect x="330" y="264" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="390" y="286" text-anchor="middle" fill="#111">5/5</text>
@@ -127,6 +166,12 @@
 <text x="1110" y="286" text-anchor="middle" fill="#111">10/10</text>
 <rect x="1170" y="264" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="1230" y="286" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1290" y="264" width="120" height="34" fill="rgb(255,131,131)" stroke="#fff"/>
+<text x="1350" y="286" text-anchor="middle" fill="#111">8/10</text>
+<rect x="1410" y="264" width="120" height="34" fill="rgb(255,193,193)" stroke="#fff"/>
+<text x="1470" y="286" text-anchor="middle" fill="#111">4/10</text>
+<rect x="1530" y="264" width="120" height="34" fill="rgb(255,123,123)" stroke="#fff"/>
+<text x="1590" y="286" text-anchor="middle" fill="#111">8/10 (+1~)</text>
 <text x="10" y="320" fill="#111">R8 Mock every collaborator</text>
 <rect x="330" y="298" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
 <text x="390" y="320" text-anchor="middle" fill="#111">0/5 (+3~)</text>
@@ -144,6 +189,12 @@
 <text x="1110" y="320" text-anchor="middle" fill="#111">3/10</text>
 <rect x="1170" y="298" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
 <text x="1230" y="320" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1290" y="298" width="120" height="34" fill="rgb(255,146,146)" stroke="#fff"/>
+<text x="1350" y="320" text-anchor="middle" fill="#111">6/10 (+2~)</text>
+<rect x="1410" y="298" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="320" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="298" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="320" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="354" fill="#111">R9 One assertion per test, on the call</text>
 <rect x="330" y="332" width="120" height="34" fill="rgb(255,208,208)" stroke="#fff"/>
 <text x="390" y="354" text-anchor="middle" fill="#111">0/5 (+3~)</text>
@@ -161,6 +212,12 @@
 <text x="1110" y="354" text-anchor="middle" fill="#111">0/10 (+4~)</text>
 <rect x="1170" y="332" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
 <text x="1230" y="354" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1290" y="332" width="120" height="34" fill="rgb(255,224,224)" stroke="#fff"/>
+<text x="1350" y="354" text-anchor="middle" fill="#111">0/10 (+4~)</text>
+<rect x="1410" y="332" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1470" y="354" text-anchor="middle" fill="#111">0/10</text>
+<rect x="1530" y="332" width="120" height="34" fill="rgb(255,255,255)" stroke="#fff"/>
+<text x="1590" y="354" text-anchor="middle" fill="#111">0/10</text>
 <text x="10" y="388" fill="#111">R10 Commit message from the harness vocabulary</text>
 <rect x="330" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="390" y="388" text-anchor="middle" fill="#111">5/5</text>
@@ -178,4 +235,10 @@
 <text x="1110" y="388" text-anchor="middle" fill="#111">10/10</text>
 <rect x="1170" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
 <text x="1230" y="388" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1290" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1350" y="388" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1410" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1470" y="388" text-anchor="middle" fill="#111">10/10</text>
+<rect x="1530" y="366" width="120" height="34" fill="rgb(255,100,100)" stroke="#fff"/>
+<text x="1590" y="388" text-anchor="middle" fill="#111">10/10</text>
 </svg>

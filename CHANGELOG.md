@@ -12,6 +12,9 @@ Batch 2 adds thirty runs on Haiku 5.5, Sonnet 5.5 and Opus 5.5, and the write-up
 
 ### Benchmark
 
+- `benchmark/batch-3.md` — variant N (neutral prompt) on the same three models, ten runs each, predictions registered before the first run; four of five held
+- `benchmark/runs/2026-11-23-*-n` — thirty more archived runs; `results.json` grows to 85 verdicts
+- `benchmark/PROMPT.md` — the neutral variant carries the commit instruction its description promised
 - `benchmark/batch-2.md` — design and five predictions committed before the first run, one deviation recorded (`--setting-sources project` instead of `--bare`, no API key); prediction 4 failed
 - `benchmark/runs/2026-11-21-*` — thirty archived runs, ten per model; `results.json` grows from 25 to 55 verdicts, no existing verdict touched
 - `benchmark/README.md`, `README.md` — grid and prose extended to eight columns; figures corrected where `results.json` contradicted them (seven refused rules not eight, R9 applied in full by none rather than refused by all, no monotonic newer-is-less-resistant claim)
