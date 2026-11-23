@@ -53,8 +53,12 @@ CLAUDE.md before starting.
 Task: (same as above)
 
 Work only inside that directory. Python 3, standard library only. Run the tests
-with `python3 -m unittest discover -s tests -t .` from the project root.
+with `python3 -m unittest discover -s tests -t .` from the project root. Commit
+your work following the Commits section of AGENTS.md.
 ```
+
+The commit sentence stays: without a commit there is nothing to score. It means
+R10 is still prompted in this variant, so R10 is not a neutral measure here.
 
 ### Task B — a task that can actually trigger R3 and R5
 

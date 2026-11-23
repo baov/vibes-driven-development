@@ -33,14 +33,22 @@ sys.path.insert(0, ROOT)
 ALLOWED_TOOLS = "Read Write Edit Glob Grep Bash(python3:*) Bash(git:*)"
 
 
-def read_prompt(fixture, root=ROOT):
-    """Return the prompt of benchmark/PROMPT.md with <FIXTURE> filled in."""
+def read_prompt(fixture, root=ROOT, variant=None):
+    """Return the prompt of benchmark/PROMPT.md with <FIXTURE> filled in.
+
+    `variant="n"` returns the neutral prompt, with the task paragraph of the
+    published prompt in place of its "(same as above)" placeholder.
+    """
     with open(os.path.join(root, "benchmark", "PROMPT.md"), encoding="utf-8") as handle:
         text = handle.read()
-    match = re.search(r"```\n(.*?)\n```", text, re.S)
-    if not match:
-        raise ValueError("no fenced prompt block in benchmark/PROMPT.md")
-    return match.group(1).replace("<FIXTURE>", fixture)
+    blocks = re.findall(r"```\n(.*?)\n```", text, re.S)
+    if len(blocks) < 2:
+        raise ValueError("no fenced prompt blocks in benchmark/PROMPT.md")
+    prompt = blocks[0]
+    if variant == "n":
+        task = re.search(r"^Task: .*?(?=\n\n)", blocks[0], re.S | re.M).group(0)
+        prompt = blocks[1].replace("Task: (same as above)", task)
+    return prompt.replace("<FIXTURE>", fixture)
 
 
 def parse_model(argument):
@@ -64,20 +72,24 @@ def build_command(model_id, prompt, isolation="project", budget=None):
 
 def main(argv):
     arguments = list(argv[1:])
+    variant = None
     execute = "--execute" in arguments
     isolation = "bare" if "--bare" in arguments else "none" if "--no-isolation" in arguments else "project"
     runs = 5
     budget = None
-    for flag in ("--runs", "--budget"):
+    for flag in ("--runs", "--budget", "--variant"):
         if flag in arguments:
             position = arguments.index(flag)
             value = arguments[position + 1]
             del arguments[position:position + 2]
             if flag == "--runs":
                 runs = int(value)
+            elif flag == "--variant":
+                variant = value
             else:
                 budget = value
     models = [parse_model(a) for a in arguments if not a.startswith("--")]
+    suffix = "-" + variant if variant else ""
     if not models:
         sys.stderr.write(__doc__)
         return 2
@@ -97,19 +109,19 @@ def main(argv):
         for number in range(1, runs + 1):
             fixture = tempfile.mkdtemp(prefix="vdd-{0}-".format(slug))
             subprocess.run([os.path.join(ROOT, "tools", "setup_fixture.sh"), fixture], check=True)
-            session = subprocess.run(build_command(model_id, read_prompt(fixture), isolation, budget),
+            session = subprocess.run(build_command(model_id, read_prompt(fixture, variant=variant), isolation, budget),
                                      cwd=fixture, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
                                      universal_newlines=True)
             try:
-                directory, key = archive_run(fixture, slug, date)
+                directory, key = archive_run(fixture, slug + suffix, date)
             except ValueError as error:
                 sys.stderr.write("{0} #{1}: not archived ({2})\n".format(slug, number, error))
                 continue
             with open(os.path.join(ROOT, "benchmark", "runs", directory, "NOTES.md"), "a",
                       encoding="utf-8") as notes:
-                notes.write("\nModel id `{0}`, isolation={1}, exit code {2}.\n\n"
+                notes.write("\nPrompt variant: {4}. Model id `{0}`, isolation={1}, exit code {2}.\n\n"
                             "## What the agent said\n\n{3}\n".format(
-                                model_id, isolation, session.returncode, session.stdout.strip()))
+                                model_id, isolation, session.returncode, session.stdout.strip(), variant or "published"))
             sys.stdout.write("{0} #{1}: archived as {2} ({3})\n".format(slug, number, directory, key))
     return 0
 
