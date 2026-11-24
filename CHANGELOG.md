@@ -4,7 +4,7 @@ Notable changes to this repository. Format based on [Keep a Changelog](https://k
 
 ## [Unreleased]
 
-The benchmark now checks itself: its published figures are computed from the data, its archived runs are scored in CI, and the harness no longer governs the repository that exhibits it.
+Batch 2 adds thirty runs on Haiku 5.5, Sonnet 5.5 and Opus 5.5, and the write-up is corrected where the data did not support it. The benchmark now checks itself: its published figures are computed from the data, its archived runs are scored in CI, and the harness no longer governs the repository that exhibits it.
 
 ### Harness
 
@@ -12,12 +12,17 @@ The benchmark now checks itself: its published figures are computed from the dat
 
 ### Benchmark
 
-- `benchmark/runs/index.json` — maps each archived run to its key in `results.json`; the second Opus 5 run is marked as incomplete (one test file archived out of six) and excluded from scoring
+- `benchmark/batch-2.md` — design and five predictions committed before the first run, one deviation recorded (`--setting-sources project` instead of `--bare`, no API key); prediction 4 failed
+- `benchmark/runs/2026-11-21-*` — thirty archived runs, ten per model; `results.json` grows from 25 to 55 verdicts, no existing verdict touched
+- `benchmark/README.md`, `README.md` — grid and prose extended to eight columns; figures corrected where `results.json` contradicted them (seven refused rules not eight, R9 applied in full by none rather than refused by all, no monotonic newer-is-less-resistant claim)
+- `benchmark/runs/index.json` — maps each archived run to its key in `results.json`; the second Opus 5 run is marked as incomplete (one test file archived out of several) and excluded from scoring
 - `benchmark/README.md` — the scorer's thresholds written out, a freeze rule, and the all-Anthropic limit stated
 - `benchmark/PROMPT.md` — a neutral-prompt variant, a task with several failure paths so that R3 and R5 can be triggered, and the environment-isolation attempt to try; none has been run
 
 ### Tooling
 
+- `tools/run_batch.py` — runs the published prompt on fresh fixtures with `claude -p` and archives each run; plans only unless `--execute` is given
+- `tools/score_run.py` — an archived package `__init__.py` is scored as `seat_booking/__init__.py`, so archives score as the live project did; no threshold changed
 - `tools/render_grid.py` — draws `assets/benchmark-grid.svg` from `results.json` instead of by hand
 - `tools/score_run.py` — `--intervals` adds the 95% Wilson interval to each cell; `score_archive` scores an archived run without git history
 - `tools/archive_run.py` — archives a finished run, writes its audit output and records its verdicts in `results.json` and `index.json`, never touching an existing one
