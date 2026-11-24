@@ -183,8 +183,10 @@ both prompts, since the CLI loads the fixture's `CLAUDE.md` on its own.
 assertions mostly on calls; 21 did one or the other (partial), 64 did neither.
 Opus 5.5 refused it in all twenty of its runs.
 Applying it would have made "a second booking of the same seat is rejected"
-unobservable, which is the one thing the task asked for. Where a rule would have
-made the feature unverifiable, every model pushed back.
+unobservable, which is the one thing the task asked for. No model applied it in
+full. Whether that was deliberate pushback or ordinary testing habit, the grid
+cannot tell (same caveat as R3): a handful of run reports say they deviated on
+purpose, and the reports are not evidence (next section).
 
 **R3 is applied by none either**, but for the opposite reason: nobody wrote a
 400-line function because the task did not call for one. A rule can go unapplied
