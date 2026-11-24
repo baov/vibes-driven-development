@@ -24,6 +24,8 @@ Batch 2 adds thirty runs on Haiku 5.5, Sonnet 5.5 and Opus 5.5, and the write-up
 
 ### Tooling
 
+- `tools/compare_labels.py`, `benchmark/hand_labels.json` — ten archived runs labelled by hand before looking at the scorer; it agrees on 80 of 90 cells, and badly on R7
+- `tools/score_run.py` — a private module logger (`_LOGGER`) now counts for R5; all archived runs rescored, one verdict moved (`run-haiku-5-5-6` R5 refused to applied)
 - `tools/run_batch.py` — runs the published prompt on fresh fixtures with `claude -p` and archives each run; plans only unless `--execute` is given
 - `tools/score_run.py` — an archived package `__init__.py` is scored as `seat_booking/__init__.py`, so archives score as the live project did; no threshold changed
 - `tools/render_grid.py` — draws `assets/benchmark-grid.svg` from `results.json` instead of by hand

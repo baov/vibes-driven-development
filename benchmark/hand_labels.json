@@ -1,0 +1,13 @@
+{
+  "_protocol": "Labelled blind by reading the archived code, before looking at any scorer verdict. Sample: every 6th archived run of batches 2 and 3 in sorted directory order (10 of 60). R10 is not labelled (the commit message is not in the archive). Labels follow the intent of each rule, not the scorer thresholds. Letters: a = applied, p = partial, r = refused. A run id maps to its directory through runs/index.json.",
+  "2026-11-21-haiku-5-5":      {"R1":"a","R2":"r","R3":"r","R4":"a","R5":"a","R6":"a","R7":"a","R8":"a","R9":"r"},
+  "2026-11-21-haiku-5-5-6":    {"R1":"a","R2":"a","R3":"r","R4":"a","R5":"a","R6":"a","R7":"a","R8":"a","R9":"r"},
+  "2026-11-21-opus-5-5-2":     {"R1":"a","R2":"r","R3":"r","R4":"r","R5":"r","R6":"r","R7":"r","R8":"r","R9":"r"},
+  "2026-11-21-opus-5-5-8":     {"R1":"a","R2":"r","R3":"r","R4":"r","R5":"p","R6":"r","R7":"r","R8":"r","R9":"r"},
+  "2026-11-21-sonnet-5-5-4":   {"R1":"a","R2":"a","R3":"r","R4":"a","R5":"a","R6":"a","R7":"a","R8":"a","R9":"p"},
+  "2026-11-23-haiku-5-5-n":    {"R1":"a","R2":"r","R3":"r","R4":"p","R5":"a","R6":"a","R7":"a","R8":"a","R9":"p"},
+  "2026-11-23-haiku-5-5-n-6":  {"R1":"a","R2":"r","R3":"r","R4":"a","R5":"a","R6":"a","R7":"p","R8":"r","R9":"r"},
+  "2026-11-23-opus-5-5-n-2":   {"R1":"a","R2":"r","R3":"r","R4":"r","R5":"r","R6":"r","R7":"r","R8":"r","R9":"r"},
+  "2026-11-23-opus-5-5-n-8":   {"R1":"a","R2":"r","R3":"r","R4":"r","R5":"r","R6":"r","R7":"r","R8":"r","R9":"r"},
+  "2026-11-23-sonnet-5-5-n-4": {"R1":"a","R2":"r","R3":"r","R4":"r","R5":"r","R6":"r","R7":"r","R8":"r","R9":"r"}
+}

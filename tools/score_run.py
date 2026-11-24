@@ -40,7 +40,8 @@ WRAPPER = re.compile(r"\b\w*(?:Processing|Technical|Generic|Internal|Service)Exc
 RAISE_WRAPPER = re.compile(r"raise\s+\w*(?:Processing|Technical|Generic|Internal|Service)Exception[^\n]*")
 KEEPS_CAUSE = re.compile(r"from\s+(?!None\b)\w+\s*$")
 HANDLER = re.compile(r"^\s*except\b|^\s*}?\s*catch\s*\(")
-LOGGING = re.compile(r"\b(?:log|logger|logging|LOG|LOGGER)\b\s*\.|\bprint\s*\(")
+# `_?` so a private module logger (`_LOGGER`, `_log`) counts: `\b` does not split `_LOGGER`.
+LOGGING = re.compile(r"\b_?(?:log|logger|logging|LOG|LOGGER)\b\s*\.|\bprint\s*\(")
 MOCKING = re.compile(r"\b(?:Mock|MagicMock|patch|mock\.)\b")
 HARNESS_MESSAGE = re.compile(r"^(?:fix|update|wip|changes|chore)\d*$", re.IGNORECASE)
 # The rule has two halves: one assertion, and on the call rather than the
