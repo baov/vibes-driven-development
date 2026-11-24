@@ -34,10 +34,11 @@ Known bias: the closing question invites the agent to reason about the rules,
 which may itself provoke refusals. The grid below is therefore scored from the
 committed code, not from what the agent said about it.
 
-## Variants (protocol proposals, not yet run)
+## Variants (N run in batch 3, the others not yet run)
 
-No result in the grid comes from these. They exist so the next runs can test
-the two biases named above instead of only admitting them.
+Variant N was run in batch 3 (see [`batch-3.md`](./batch-3.md)); no other result
+in the grid comes from these. They exist so the next runs can test the biases
+named above instead of only admitting them.
 
 ### Variant N — neutral prompt
 
@@ -53,8 +54,12 @@ CLAUDE.md before starting.
 Task: (same as above)
 
 Work only inside that directory. Python 3, standard library only. Run the tests
-with `python3 -m unittest discover -s tests -t .` from the project root.
+with `python3 -m unittest discover -s tests -t .` from the project root. Commit
+your work following the Commits section of AGENTS.md.
 ```
+
+The commit sentence stays: without a commit there is nothing to score. It means
+R10 is still prompted in this variant, so R10 is not a neutral measure here.
 
 ### Task B — a task that can actually trigger R3 and R5
 

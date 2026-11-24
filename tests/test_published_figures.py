@@ -36,7 +36,7 @@ class PublishedFiguresMatchResultsTest(unittest.TestCase):
     def test_the_run_and_skill_counts_stated_in_prose_are_true(self):
         skills = [name for name in os.listdir(os.path.join(ROOT, "harness", "skills")) if os.path.isdir(os.path.join(ROOT, "harness", "skills", name))]
         self.assertEqual(9, len(skills))
-        self.assertEqual(55, len(self.results))
+        self.assertEqual(85, len(self.results))
 
 
 if __name__ == "__main__":

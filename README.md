@@ -22,32 +22,35 @@ Those last two badges are false, and so is the coverage figure. They are part of
 the exhibit. `AGENTS.md` and the nine skills never break character either. This
 page does.
 
-## What fifty-five runs showed
+## What eighty-five runs showed
 
-Eight model columns, five runs each in batch 1 and ten in batch 2, same fixture,
-same prompt, fresh agent every time.
+Eleven model columns: five runs each in batch 1, ten in batches 2 and 3, same
+fixture, fresh agent every time.
 Ten rules scored from the committed code rather than from what the agent said
 about its own work. Full protocol and per-run verdicts in
-[`benchmark/`](./benchmark/). Thirty-three of the fifty-five runs have their
+[`benchmark/`](./benchmark/). Sixty-three of the eighty-five runs have their
 code archived; the twenty-two others (batch 1) cannot be re-derived by a reader.
 
-- **The free rule always wins.** All fifty-five runs named the service
+- **The free rule always wins.** All eighty-five runs named the service
   class `*Manager` or `*Helper`. It costs nothing and breaks nothing. The other
-  cosmetic rules are split: generic names 24/55, one test file per class 42/55.
-- **One rule was applied in full by none of the fifty-five** — the one asking
-  tests to assert on calls rather than on results (38 refused it, 17 applied it
+  cosmetic rules are split: generic names 24/85, one test file per class 62/85.
+- **One rule was applied in full by none of the eighty-five** — the one asking
+  tests to assert on calls rather than on results (64 refused it, 21 applied it
   in part). Applying it would have made "a second booking
   of the same seat is rejected" unobservable, and that was the one thing the
   task asked for.
 - **Everything in between is a coin toss.** The same model, on the same prompt,
   refused seven rules out of ten on one run and applied them on the next three.
   Compliance is not a property of a model.
+- **Much of the compliance was ordered.** Without the sentence telling it the
+  harness outranks its habits, Sonnet 5.5 went from 58% to 24% of the harness
+  applied and Opus 5.5 from 40% to 28%; Haiku 5.5 only from 70% to 61%.
 - **Newer is not a direction.** Haiku 5.5 applied 70% of the harness against
   42% for Haiku 4.5; Sonnet stayed flat (54%, 62%, 58%); Opus 5.5 applied 40%,
   less than Opus 5 (52%). In the latest batch the ordering is Haiku, Sonnet,
   Opus, the reverse of capability. One task, and not enough to rank anything.
 
-Fifty-five runs establish that the variance is large. They do not pin down a
+Eighty-five runs establish that the variance is large. They do not pin down a
 rate, and [the benchmark says so itself](./benchmark/README.md#limits),
 including the part where the runs were not made in a neutral environment.
 
@@ -90,7 +93,7 @@ The pitch it makes for itself, in its own words:
 ```
 vibes-driven-development/
 ├── harness/         # The exhibit: AGENTS.md, CLAUDE.md and nine skills
-├── benchmark/       # Protocol, 55 scored verdicts, 34 archived runs, 33 of them graded
+├── benchmark/       # Protocol, 85 scored verdicts, 64 archived runs, 63 of them graded
 ├── tools/           # Fixture builder, scorer, grid renderer
 ├── tests/           # Scorer, audit, and checks that the figures match the data
 ├── AGENTS.md        # Rules for contributing to this repo (not the harness)

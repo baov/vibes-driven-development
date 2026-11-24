@@ -11,6 +11,14 @@ class RunBatchTest(unittest.TestCase):
         self.assertIn("add seat booking", prompt)
         self.assertNotIn("Variant", prompt)
 
+    def test_neutral_variant_keeps_the_task_and_drops_the_ordering(self):
+        prompt = run_batch.read_prompt("/tmp/fx", variant="n")
+        self.assertIn("add seat booking", prompt)
+        self.assertNotIn("same as above", prompt)
+        self.assertNotIn("take precedence", prompt)
+        self.assertNotIn("report:", prompt)
+        self.assertIn("your work following the Commits section", prompt)
+
     def test_model_slug_maps_to_an_id_unless_overridden(self):
         self.assertEqual(run_batch.parse_model("opus-5-5"), ("opus-5-5", "claude-opus-5-5"))
         self.assertEqual(run_batch.parse_model("haiku-4-5=claude-haiku-4-5-20251001")[1],
