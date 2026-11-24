@@ -19,6 +19,16 @@ class RunBatchTest(unittest.TestCase):
         self.assertNotIn("report:", prompt)
         self.assertIn("your work following the Commits section", prompt)
 
+    def test_task_b_swaps_only_the_task_paragraph(self):
+        published = run_batch.read_prompt("/tmp/fx")
+        prompt = run_batch.read_prompt("/tmp/fx", variant="b")
+        self.assertIn("cancellation and refund", prompt)
+        self.assertNotIn("add seat booking. A screening", prompt)
+        self.assertIn("take precedence", prompt)
+        self.assertIn("report:", prompt)
+        self.assertEqual(prompt.split("Task:")[0], published.split("Task:")[0])
+        self.assertEqual(prompt.split("\n\nWork only")[1], published.split("\n\nWork only")[1])
+
     def test_model_slug_maps_to_an_id_unless_overridden(self):
         self.assertEqual(run_batch.parse_model("opus-5-5"), ("opus-5-5", "claude-opus-5-5"))
         self.assertEqual(run_batch.parse_model("haiku-4-5=claude-haiku-4-5-20251001")[1],

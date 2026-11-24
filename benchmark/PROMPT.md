@@ -34,10 +34,11 @@ Known bias: the closing question invites the agent to reason about the rules,
 which may itself provoke refusals. The grid below is therefore scored from the
 committed code, not from what the agent said about it.
 
-## Variants (N run in batch 3, the others not yet run)
+## Variants (N run in batch 3, B in batch 4)
 
-Variant N was run in batch 3 (see [`batch-3.md`](./batch-3.md)); no other result
-in the grid comes from these. They exist so the next runs can test the biases
+Variant N was run in batch 3 (see [`batch-3.md`](./batch-3.md)) and Task B in
+batch 4 (see [`batch-4.md`](./batch-4.md)); no other result in the grid comes
+from these. They exist so the next runs can test the biases
 named above instead of only admitting them.
 
 ### Variant N — neutral prompt
@@ -67,16 +68,20 @@ Task A has a single failure path, so R3 (one long function) and R5 (log at
 every layer) can go unapplied because they never came up. Task B has several:
 
 ```
-Task: add booking cancellation with refund. A client can cancel a booking up to
-two hours before the screening. The refund goes through a payment gateway
-passed to the service, which can fail transiently (retry up to three times),
-fail permanently (the booking stays active), or be unavailable (the
-cancellation is rejected). Cancelling an already cancelled or unknown booking
-must be rejected. Expose the refund status of a booking.
+Task: add seat booking with cancellation and refund. A screening has a start
+time, a room with rows and seats, and a price. A client books a seat for a
+screening; booking a seat that is already booked must be rejected. A client can
+cancel a booking up to two hours before the screening starts. The refund goes
+through a payment gateway passed to the service, which can fail transiently
+(retry up to three times), fail permanently (the booking stays active), or be
+unavailable (the cancellation is rejected). Cancelling an already cancelled or
+unknown booking must be rejected. Expose the refund status of a booking.
 ```
 
-Fixture and scoring are unchanged. Report Task B grids separately: never pool
-them with Task A.
+Task B is self-contained (it builds the booking it cancels), because the fixture
+is empty. It is given with the published prompt of Task A, only the task
+paragraph differing. Scoring is unchanged. Report Task B grids separately: never
+pool them with Task A.
 
 ### Environment isolation
 
