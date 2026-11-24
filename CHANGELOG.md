@@ -12,6 +12,8 @@ Batch 2 adds thirty runs on Haiku 5.5, Sonnet 5.5 and Opus 5.5, and the write-up
 
 ### Benchmark
 
+- `benchmark/runs/2026-11-24-*-b` — batch 4: Task B (cancellation and refund through a failing gateway), thirty archived runs; `results.json` grows to 115 verdicts; four of six predictions held, the two failed ones are about Opus 5.5
+- `benchmark/README.md` — a Task B table, kept apart from Task A: R3 reached for the first time (8 partial, 0 full), R5 applied by Opus 5.5 in 7 runs of 10 against 1 of 10 on Task A
 - `benchmark/batch-3.md` — variant N (neutral prompt) on the same three models, ten runs each, predictions registered before the first run; four of five held
 - `benchmark/runs/2026-11-23-*-n` — thirty more archived runs; `results.json` grows to 85 verdicts
 - `benchmark/PROMPT.md` — the neutral variant carries the commit instruction its description promised

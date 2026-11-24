@@ -225,6 +225,42 @@ load-bearing split above does not predict it cleanly: R4 and R6, both classed
 load-bearing, were applied in 43 and 49 runs out of 85, more than the cosmetic
 R2 (24). R7 (62) and R10 (79) sit above them.
 
+### Task B: a task with failure paths (batch 4)
+
+Task B adds cancellation with a refund through a gateway that can fail
+transiently, permanently or be unavailable (see [`batch-4.md`](./batch-4.md)).
+Same prompt as batch 2 otherwise, ten runs per model, reported apart from Task A:
+
+| Rule | Haiku 5.5 B | Sonnet 5.5 B | Opus 5.5 B |
+|---|---|---|---|
+| R1 Role suffix on the service class | 10/10 | 10/10 | 10/10 |
+| R2 Generic variable names | 1/10 | 6/10 | 0/10 (+3~) |
+| R3 No extraction, one long function | 0/10 (+4~) | 0/10 (+1~) | 0/10 (+3~) |
+| R4 Generic wrapper exception, cause dropped | 9/10 (+1~) | 7/10 (+1~) | 5/10 |
+| R5 Log at every layer, then rethrow | 9/10 (+1~) | 9/10 (+1~) | 7/10 (+2~) |
+| R6 A comment above each line | 10/10 | 8/10 | 6/10 |
+| R7 One test file per class | 3/10 | 0/10 | 8/10 |
+| R8 Mock every collaborator | 7/10 (+3~) | 0/10 (+6~) | 0/10 |
+| R9 One assertion per test, on the call | 0/10 | 0/10 (+3~) | 0/10 |
+| R10 Commit message from the harness vocabulary | 10/10 | 10/10 | 10/10 |
+
+Applied share of verdicts: Haiku 5.5 59%, Sonnet 5.5 50%, Opus 5.5 46%.
+
+- **R3 moved for the first time.** Eight runs applied it in part (average
+  function length 25 lines or more) and none in full, so the task does reach it;
+  agents still split the work.
+- **R5 is applied far more than on Task A**, notably by Opus 5.5: 7 of 10, against
+  1 of 10 on Task A. With several failure paths there are several handlers, and
+  logging them is the cheapest thing to do. This is the kind of rule that went
+  unapplied on Task A "because it never came up".
+- **Opus 5.5 applied more than on Task A** (46% against 40%) while Haiku and
+  Sonnet applied less. Part of Opus's gain is R7 (8 of 10): the scorer counts
+  a single `test_booking.py` as "applied" (see the hand validation above), so
+  this figure is the least trustworthy of the batch.
+- **Still no R9**, and R8 is rarely applied in full by Sonnet and Opus.
+
+Not checked: whether the retry logic works. The scorer reads style, not behaviour.
+
 ### The reports are not evidence
 
 Agents can describe their work in rules rather than in what the code does. The
