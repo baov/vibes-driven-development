@@ -37,7 +37,8 @@ def read_prompt(fixture, root=ROOT, variant=None):
     """Return the prompt of benchmark/PROMPT.md with <FIXTURE> filled in.
 
     `variant="n"` returns the neutral prompt, with the task paragraph of the
-    published prompt in place of its "(same as above)" placeholder.
+    published prompt in place of its "(same as above)" placeholder;
+    `variant="b"` returns the published prompt with the Task B paragraph.
     """
     with open(os.path.join(root, "benchmark", "PROMPT.md"), encoding="utf-8") as handle:
         text = handle.read()
@@ -48,6 +49,13 @@ def read_prompt(fixture, root=ROOT, variant=None):
     if variant == "n":
         task = re.search(r"^Task: .*?(?=\n\n)", blocks[0], re.S | re.M).group(0)
         prompt = blocks[1].replace("Task: (same as above)", task)
+    elif variant == "b":
+        # Task B: the published prompt with only its task paragraph replaced.
+        task_a = re.search(r"^Task: .*?(?=\n\n)", blocks[0], re.S | re.M).group(0)
+        task_b = [block for block in blocks if block.startswith("Task: add seat booking with cancellation")]
+        if not task_b:
+            raise ValueError("no Task B block in benchmark/PROMPT.md")
+        prompt = blocks[0].replace(task_a, task_b[0])
     return prompt.replace("<FIXTURE>", fixture)
 
 

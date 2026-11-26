@@ -54,8 +54,9 @@ works, or whether a failure can be diagnosed.
 ## How the scorer decides
 
 `tools/score_run.py` turns code into verdicts with fixed thresholds. They are
-heuristics: nobody has validated them against hand-labelled runs, and they were
-not registered before the first run. Read the grid with that in mind, and note
+heuristics, and they were not registered before the first run. A first, small
+hand validation is below; it does not make them right. Read the grid with that
+in mind, and note
 that [`tests/test_benchmark_evidence.py`](../tests/test_benchmark_evidence.py)
 only proves the scorer is *consistent* with the published verdicts, not right.
 
@@ -78,6 +79,31 @@ changelog. A new run must never be the reason a threshold moves.
 
 `python3 tools/score_run.py <dir> --intervals` adds the 95% Wilson interval of
 the applied rate to each cell. At five runs, 3/5 is `[23-88%]`.
+
+### Hand validation (ten runs)
+
+Ten archived runs (every sixth of batches 2 and 3, in directory order) were
+labelled by reading the code, before any verdict was looked at; the labels are
+in [`hand_labels.json`](./hand_labels.json) and `python3 tools/compare_labels.py`
+recompares them. R10 is left out (the commit message is not archived).
+
+The scorer agrees with the hand labels on 80 of 90 cells. R7 is the outlier, 4
+of 10: the scorer checks that a test file's name contains the source file's
+name, while the rule asks for one test file per class, so a single `test_booking.py`
+covering six classes scores "applied". Counts of R7 "applied" (62 of 85) therefore
+overstate it; they are left as published, because 22 runs are not archived and
+cannot be rescored.
+
+The first pass found one scorer bug, now fixed: a module logger named `_LOGGER`
+was not recognised, so one Haiku 5.5 run lost its R5 verdict (agreement was 79
+of 90 before the fix). Following the freeze rule, all 64 archived runs were
+rescored: that run's R5 went from refused to applied, nothing else moved, and
+Haiku 5.5's applied share went from 70% to 71%. The unarchived batch-1 runs
+cannot be checked for the same bug.
+
+Limits: one labeller, who also wrote the scorer's documentation; ten runs, most
+cells of which are easy (R1 and R3 never vary); no second opinion. This shows the
+scorer is not wildly off on most rules, not that it is accurate.
 
 ## Reproducing a run
 
@@ -109,7 +135,7 @@ Exact models: `claude-opus-5`, `claude-opus-4-8`, `claude-sonnet-5`,
 | R2 | Generic variable names | 3/5 | 0/5 | 4/5 (+1~) | 5/5 | 1/5 (+1~) | 5/10 | 5/10 | 1/10 (+1~) | 0/10 | 0/10 | 0/10 |
 | R3 | No extraction, one long function | 0/5 | 0/5 | 0/5 | 0/5 | 0/5 | 0/10 | 0/10 | 0/10 | 0/10 | 0/10 | 0/10 |
 | R4 | Generic wrapper exception, cause dropped | 3/5 | 1/5 | 4/5 | 3/5 (+2~) | 4/5 (+1~) | 10/10 | 5/10 (+2~) | 3/10 | 10/10 | 0/10 | 0/10 |
-| R5 | Log at every layer, then rethrow | 2/5 | 0/5 | 3/5 (+1~) | 0/5 | 2/5 (+2~) | 8/10 | 8/10 | 1/10 | 7/10 | 0/10 | 0/10 |
+| R5 | Log at every layer, then rethrow | 2/5 | 0/5 | 3/5 (+1~) | 0/5 | 2/5 (+2~) | 9/10 | 8/10 | 1/10 | 7/10 | 0/10 | 0/10 |
 | R6 | A comment above each line | 3/5 | 0/5 | 5/5 | 5/5 | 4/5 (+1~) | 10/10 | 7/10 | 5/10 | 10/10 | 0/10 | 0/10 |
 | R7 | One test file per class | 5/5 | 1/5 (+4~) | 4/5 | 2/5 | 2/5 (+1~) | 8/10 | 10/10 | 10/10 | 8/10 | 4/10 | 8/10 (+1~) |
 | R8 | Mock every collaborator | 0/5 (+3~) | 0/5 | 1/5 | 3/5 (+2~) | 1/5 (+2~) | 9/10 (+1~) | 3/10 | 0/10 | 6/10 (+2~) | 0/10 | 0/10 |
@@ -142,7 +168,7 @@ did exactly that.
 Applied verdicts over the ten rules, as a share of all verdicts of the model
 (batch 1 has 50 per model, batch 2 has 100):
 
-- Haiku: 4.5 applied 42%, 5.5 applied 70%. The newer model complied more.
+- Haiku: 4.5 applied 42%, 5.5 applied 71%. The newer model complied more.
 - Sonnet: 4.6 applied 54%, 5 applied 62%, 5.5 applied 58%. Flat.
 - Opus: 4.8 applied 20%, 5 applied 52%, 5.5 applied 40%. Up, then down.
 
@@ -150,7 +176,7 @@ Three families, three different directions. Batch 1 alone suggested "newer
 complies more"; batch 2 does not confirm it for the two larger families, and
 batch 2 predicted otherwise for Opus (see [`batch-2.md`](./batch-2.md): prediction
 4 failed, Opus 5.5 applied less than Opus 5). Within batch 2 the ordering is
-Haiku 5.5 > Sonnet 5.5 > Opus 5.5 (70, 58, 40), the opposite of capability.
+Haiku 5.5 > Sonnet 5.5 > Opus 5.5 (71, 58, 40), the opposite of capability.
 Cross-batch comparisons are confounded by the environment change; the
 within-batch ordering is the cleaner one, and it is one task.
 
@@ -161,7 +187,7 @@ same run, so they carry no confidence interval.
 
 Batch 3 gives the same three models the same task without the sentence that the
 harness outranks their habits and without the closing report. Applied share of
-verdicts, published prompt then neutral prompt: Haiku 5.5 70% then 61%, Sonnet
+verdicts, published prompt then neutral prompt: Haiku 5.5 71% then 61%, Sonnet
 5.5 58% then 24%, Opus 5.5 40% then 28%.
 
 Sonnet 5.5 stopped applying generic names, wrapped exceptions, logging, a comment

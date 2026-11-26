@@ -44,8 +44,8 @@ code archived; the twenty-two others (batch 1) cannot be re-derived by a reader.
   Compliance is not a property of a model.
 - **Much of the compliance was ordered.** Without the sentence telling it the
   harness outranks its habits, Sonnet 5.5 went from 58% to 24% of the harness
-  applied and Opus 5.5 from 40% to 28%; Haiku 5.5 only from 70% to 61%.
-- **Newer is not a direction.** Haiku 5.5 applied 70% of the harness against
+  applied and Opus 5.5 from 40% to 28%; Haiku 5.5 only from 71% to 61%.
+- **Newer is not a direction.** Haiku 5.5 applied 71% of the harness against
   42% for Haiku 4.5; Sonnet stayed flat (54%, 62%, 58%); Opus 5.5 applied 40%,
   less than Opus 5 (52%). In the latest batch the ordering is Haiku, Sonnet,
   Opus, the reverse of capability. One task, and not enough to rank anything.
