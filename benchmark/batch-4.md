@@ -36,3 +36,17 @@ reads style, not behaviour; a run that retries twice, or never, scores the same.
 
 A prediction counts as failed if the archived runs say so. Runs that cannot be
 archived (no source file, or no commit) are reported, not replaced.
+
+## Outcome
+
+Thirty runs, ten per model, all archived under `runs/*-b`.
+
+1. R3 applied in full by at most 2 of 30: **held** (0 in full, 8 in part).
+2. R9 applied in full by no run: **held** (0/30).
+3. R1 in at least 8 of 10 runs of every model: **held** (30/30).
+4. Opus 5.5 applies R5 in at most 2 of 10: **failed** (7 of 10, 2 more in part).
+5. Each model applies a smaller share than on Task A: **failed** for Opus (46%
+   against 40%); held for Haiku (59% against 71%) and Sonnet (50% against 58%).
+6. Ordering Haiku > Sonnet > Opus survives: **held** (59, 50, 46).
+
+Four of six held. The two that failed are the two about Opus.

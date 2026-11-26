@@ -93,7 +93,7 @@ The pitch it makes for itself, in its own words:
 ```
 vibes-driven-development/
 ├── harness/         # The exhibit: AGENTS.md, CLAUDE.md and nine skills
-├── benchmark/       # Protocol, 85 scored verdicts, 64 archived runs, 63 of them graded
+├── benchmark/       # Protocol, 115 scored verdicts, 94 archived runs, 93 of them graded
 ├── tools/           # Fixture builder, scorer, grid renderer
 ├── tests/           # Scorer, audit, and checks that the figures match the data
 ├── AGENTS.md        # Rules for contributing to this repo (not the harness)
